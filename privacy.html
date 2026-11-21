@@ -1,28 +1,95 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Orbit Hop – Privacy Policy</title><style>:root{--bg:#0B0E1A;--fg:#E8EAF2;--muted:#9AA0B4;--accent:#7FD8FF}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-main{max-width:44rem;margin:0 auto;padding:40px 16px 64px}
-h1{line-height:1.25}a{color:var(--accent)}p,li{color:var(--fg)}em{color:var(--muted)}
-.app{display:flex;gap:16px;align-items:center;margin:24px 0}.app img{width:72px;height:72px;border-radius:16px}</style></head>
-<body><main><h1>Privacy Policy — Orbit Hop</h1>
-<p><em>Last updated: November 13, 2026</em></p>
-<p>Orbit Hop ("the app") is developed by <strong>OMDO</strong> ("we"). This policy explains what information is handled when you use the app.</p>
-<h2>Information we collect</h2>
-<p>We do not collect, store or share any personal information ourselves. Your high score, stars and unlocked skins are stored only on your device.</p>
-<h2>Advertising</h2>
-<p>The app shows ads through <strong>Google AdMob</strong>. To serve and measure ads, Google may collect and process:</p>
-<ul>
-<li>device identifiers such as the Advertising ID</li>
-<li>IP address and approximate location</li>
-<li>device and app information, and information about how you interact with ads</li>
-</ul>
-<p>Where the law requires it (for example in the EEA, the UK and Switzerland), we ask for your consent before personalized ads are shown. You can change your choice at any time with the <strong>Privacy options</strong> button on the main menu. You can also reset or delete your Advertising ID in your Android device settings.</p>
-<p>Learn how Google uses data: <a href="https://policies.google.com/technologies/partner-sites">https://policies.google.com/technologies/partner-sites</a></p>
-<p>Google privacy policy: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></p>
-<h2>Children</h2>
-<p>The app is not directed at children under 13, and we do not knowingly collect information from children.</p>
-<h2>Changes</h2>
-<p>We may update this policy. Changes will be posted on this page.</p>
-<h2>Contact</h2>
-<p><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#111;&#109;&#100;&#111;&#46;&#103;&#97;&#109;&#101;&#115;&#50;&#49;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#111;&#109;&#100;&#111;&#46;&#103;&#97;&#109;&#101;&#115;&#50;&#49;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p><p><a href="./">← OMDO</a></p></main></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Orbit Hop – Privacy Policy</title>
+  <meta name="description" content="Privacy policy for Orbit Hop: Space Jump by OMDO.">
+  <meta name="theme-color" content="#0b0e1a">
+  <link rel="canonical" href="https://omdo-apps.github.io/privacy.html">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="omdo-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE27A"/><stop offset="1" stop-color="#FFB938"/></linearGradient>
+      <mask id="omdo-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512"><rect width="512" height="512" fill="#fff"/><circle cx="318" cy="214" r="150" fill="#000"/></mask>
+      <symbol id="omdo-mark" viewBox="40 60 400 400">
+        <circle cx="246" cy="268" r="176" fill="url(#omdo-gold)" mask="url(#omdo-cut)"/>
+        <path d="M330.85,173.12 L340.30,224.47 L391.28,235.70 L345.37,260.55 L350.44,312.51 L312.62,276.53 L264.77,297.40 L287.30,250.31 L252.66,211.26 L304.41,218.14 Z" fill="url(#omdo-gold)" stroke="url(#omdo-gold)" stroke-width="10" stroke-linejoin="round"/>
+        <path d="M392,125 L396.24,135.76 L407,140 L396.24,144.24 L392,155 L387.76,144.24 L377,140 L387.76,135.76 Z" fill="#FFE27A" opacity="0.9"/>
+        <path d="M84,116 L87.54,124.46 L96,128 L87.54,131.54 L84,140 L80.46,131.54 L72,128 L80.46,124.46 Z" fill="#FFE27A" opacity="0.75"/>
+      </symbol>
+    </defs>
+  </svg>
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main">
+      <a class="brand" href="./" aria-label="OMDO Apps home">
+        <svg aria-hidden="true"><use href="#omdo-mark"/></svg>
+        <span class="brand-name">OMDO<small>APPS</small></span>
+      </a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="./#games">Games</a>
+        <a href="./#about">About</a>
+        <a href="./#contact">Contact</a>
+        <a class="cta" href="./#beta">Join the beta</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="wrap">
+      <article class="prose reveal">
+        <a class="back" href="./">← OMDO</a>
+        <h1>Privacy Policy — Orbit Hop</h1>
+        <p><em>Last updated: November 13, 2026</em></p>
+        <p>Orbit Hop ("the app") is developed by <strong>OMDO</strong> ("we"). This policy explains what information is handled when you use the app.</p>
+        <h2>Information we collect</h2>
+        <p>We do not collect, store or share any personal information ourselves. Your high score, stars and unlocked skins are stored only on your device.</p>
+        <h2>Advertising</h2>
+        <p>The app shows ads through <strong>Google AdMob</strong>. To serve and measure ads, Google may collect and process:</p>
+        <ul>
+          <li>device identifiers such as the Advertising ID</li>
+          <li>IP address and approximate location</li>
+          <li>device and app information, and information about how you interact with ads</li>
+        </ul>
+        <p>Where the law requires it (for example in the EEA, the UK and Switzerland), we ask for your consent before personalized ads are shown. You can change your choice at any time with the <strong>Privacy options</strong> button on the main menu. You can also reset or delete your Advertising ID in your Android device settings.</p>
+        <p>Learn how Google uses data: <a href="https://policies.google.com/technologies/partner-sites">https://policies.google.com/technologies/partner-sites</a></p>
+        <p>Google privacy policy: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></p>
+        <h2>Children</h2>
+        <p>The app is not directed at children under 13, and we do not knowingly collect information from children.</p>
+        <h2>Changes</h2>
+        <p>We may update this policy. Changes will be posted on this page.</p>
+        <h2>Contact</h2>
+        <p><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#111;&#109;&#100;&#111;&#46;&#103;&#97;&#109;&#101;&#115;&#50;&#49;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#111;&#109;&#100;&#111;&#46;&#103;&#97;&#109;&#101;&#115;&#50;&#49;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <a class="brand" href="./" aria-label="OMDO Apps home">
+        <svg aria-hidden="true"><use href="#omdo-mark"/></svg>
+        <span class="brand-name">OMDO<small>APPS</small></span>
+      </a>
+      <div class="footer-links">
+        <a href="./#games">Orbit Hop</a>
+        <a href="privacy.html">Privacy policy</a>
+        <a href="./#contact">Contact</a>
+        <a href="https://www.instagram.com/omdo.apps/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div>© <span data-year>2026</span> OMDO</div>
+    </div>
+  </footer>
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

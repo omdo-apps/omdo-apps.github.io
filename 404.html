@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lost in space — OMDO Apps</title>
+  <meta name="description" content="This page drifted out of orbit.">
+  <meta name="theme-color" content="#0b0e1a">
+  
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="omdo-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE27A"/><stop offset="1" stop-color="#FFB938"/></linearGradient>
+      <mask id="omdo-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512"><rect width="512" height="512" fill="#fff"/><circle cx="318" cy="214" r="150" fill="#000"/></mask>
+      <symbol id="omdo-mark" viewBox="40 60 400 400">
+        <circle cx="246" cy="268" r="176" fill="url(#omdo-gold)" mask="url(#omdo-cut)"/>
+        <path d="M330.85,173.12 L340.30,224.47 L391.28,235.70 L345.37,260.55 L350.44,312.51 L312.62,276.53 L264.77,297.40 L287.30,250.31 L252.66,211.26 L304.41,218.14 Z" fill="url(#omdo-gold)" stroke="url(#omdo-gold)" stroke-width="10" stroke-linejoin="round"/>
+        <path d="M392,125 L396.24,135.76 L407,140 L396.24,144.24 L392,155 L387.76,144.24 L377,140 L387.76,135.76 Z" fill="#FFE27A" opacity="0.9"/>
+        <path d="M84,116 L87.54,124.46 L96,128 L87.54,131.54 L84,140 L80.46,131.54 L72,128 L80.46,124.46 Z" fill="#FFE27A" opacity="0.75"/>
+      </symbol>
+    </defs>
+  </svg>
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main">
+      <a class="brand" href="/" aria-label="OMDO Apps home">
+        <svg aria-hidden="true"><use href="#omdo-mark"/></svg>
+        <span class="brand-name">OMDO<small>APPS</small></span>
+      </a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="/#games">Games</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+        <a class="cta" href="/#beta">Join the beta</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="wrap lost">
+      <div class="big reveal">404</div>
+      <h1 class="reveal" style="--d:.08s">Lost in space</h1>
+      <p class="reveal" style="--d:.16s">This page drifted out of orbit. Let's hop you back home.</p>
+      <a class="btn btn-gold reveal" style="--d:.24s" href="/">Back to OMDO</a>
+    </div>
+  </main>
+  <script src="/assets/site.js" defer></script>
+</body>
+</html>
