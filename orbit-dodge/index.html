@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Orbit Dodge — One-tap asteroid dodging game | OMDO Apps</title>
+  <meta name="description" content="Tap to flip your orbit and slip past the asteroids. Orbit Dodge is a one-tap survival arcade game for Android by OMDO, coming soon to Google Play.">
+  <meta name="theme-color" content="#0b0e1a">
+  <link rel="canonical" href="https://omdo-apps.github.io/orbit-dodge/">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OMDO Apps">
+  <meta property="og:title" content="Orbit Dodge — Dodge the asteroids, one tap at a time">
+  <meta property="og:description" content="Tap to flip your orbit and slip past the asteroids. How long can you survive? A one-tap arcade game for Android by OMDO.">
+  <meta property="og:url" content="https://omdo-apps.github.io/orbit-dodge/">
+  <meta property="og:image" content="https://omdo-apps.github.io/orbit-dodge/img/og-image.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="500">
+  <meta property="og:image:alt" content="Orbit Dodge logo with the tagline Tap to flip. Dodge to survive., beside a glowing orb on its orbit around the sun as asteroids drift in">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css?v=2">
+  <link rel="stylesheet" href="orbit-dodge.css?v=1">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"VideoGame","name":"Orbit Dodge","url":"https://omdo-apps.github.io/orbit-dodge/","image":"https://omdo-apps.github.io/orbit-dodge/img/og-image.jpg","description":"A one-tap arcade game about timing: reverse your orbit to dodge the asteroids and survive as long as you can.","genre":"Arcade","gamePlatform":"Android","publisher":{"@type":"Organization","name":"OMDO Apps","url":"https://omdo-apps.github.io/","email":"omdo.games21@gmail.com"}}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- OMDO logo mark (same as the home page), drawn once and reused -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="omdo-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE27A"/><stop offset="1" stop-color="#FFB938"/></linearGradient>
+      <mask id="omdo-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512"><rect width="512" height="512" fill="#fff"/><circle cx="318" cy="214" r="150" fill="#000"/></mask>
+      <symbol id="omdo-mark" viewBox="40 60 400 400">
+        <circle cx="246" cy="268" r="176" fill="url(#omdo-gold)" mask="url(#omdo-cut)"/>
+        <path d="M330.85,173.12 L340.30,224.47 L391.28,235.70 L345.37,260.55 L350.44,312.51 L312.62,276.53 L264.77,297.40 L287.30,250.31 L252.66,211.26 L304.41,218.14 Z" fill="url(#omdo-gold)" stroke="url(#omdo-gold)" stroke-width="10" stroke-linejoin="round"/>
+        <path d="M392,125 L396.24,135.76 L407,140 L396.24,144.24 L392,155 L387.76,144.24 L377,140 L387.76,135.76 Z" fill="#FFE27A" opacity="0.9"/>
+        <path d="M84,116 L87.54,124.46 L96,128 L87.54,131.54 L84,140 L80.46,131.54 L72,128 L80.46,124.46 Z" fill="#FFE27A" opacity="0.75"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main">
+      <a class="brand" href="../" aria-label="OMDO Apps home">
+        <svg aria-hidden="true"><use href="#omdo-mark"/></svg>
+        <span class="brand-name">OMDO<small>APPS</small></span>
+      </a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="../#games">All games</a>
+        <a href="#screens">Screenshots</a>
+        <a href="#press">Press kit</a>
+        <a class="cta" href="#test">Join the test</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- hero -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow reveal"><span class="dot"></span>Closed test coming soon on Google Play</span>
+          <h1 class="reveal" style="--d:.08s">Orbit <span class="gold">Dodge</span></h1>
+          <p class="lead reveal" style="--d:.16s">Tap to flip your orbit and slip past the asteroids. How long can you survive?</p>
+          <p class="sub reveal" style="--d:.2s">A one-tap survival game from OMDO. You never leave your orbit: your only move is to reverse it.</p>
+          <div class="hero-actions reveal" style="--d:.24s">
+            <a class="btn btn-gold" href="#test">
+              Join the test
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </a>
+            <!-- [replace] When Orbit Dodge is public on Google Play, replace this box with the official Google Play badge linking to
+                 https://play.google.com/store/apps/details?id=com.omdo.orbitdodge (see README, "Placeholders"). -->
+          </div>
+        </div>
+        <div class="hero-art od-art reveal" style="--d:.1s" aria-hidden="true">
+          <div class="halo"></div>
+          <div class="orbit"><span class="comet"></span></div>
+          <div class="sun"></div>
+          <span class="rock r1"></span>
+          <span class="rock r2"></span>
+          <span class="rock r3"></span>
+          <span class="rock r4"></span>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">Scroll<i></i></div>
+    </section>
+
+    <!-- the game -->
+    <section id="game">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">The game</span>
+          <h2>Stay on your orbit. Dodge everything.</h2>
+          <p>A glowing orb circles a blazing star in deep space, and asteroids drift in from every edge of the screen. One tap reverses your orbit. Your score is simply how many seconds you survive.</p>
+        </div>
+        <div class="game-grid">
+          <div class="phone reveal">
+            <img src="img/shot-1.webp" alt="Gameplay 17.5 seconds into a run: the orb has just reversed its orbit around the sun and slipped past an asteroid, with a CLOSE! pop" width="540" height="960">
+          </div>
+          <div class="game-copy reveal" style="--d:.1s">
+            <div class="app-title">
+              <img src="img/icon.png" alt="Orbit Dodge app icon" width="76" height="76">
+              <div>
+                <h3>Orbit Dodge</h3>
+                <div class="meta">Arcade · Android · Plays offline</div>
+              </div>
+            </div>
+            <p>A one-tap arcade game about timing. The longer you last, the faster and more often the asteroids come, and your orb speeds up too. Runs start with a single tap and restart just as fast, so it fits into a short break.</p>
+            <h4>How to play</h4>
+            <ol class="how">
+              <li>Tap anywhere to start.</li>
+              <li>Tap to switch your orbit between clockwise and counter-clockwise.</li>
+              <li>Don't touch the asteroids.</li>
+              <li>Crashed? Tap Play Again and go for a longer run.</li>
+            </ol>
+            <h4>What's in the game</h4>
+            <ul class="features">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-13.7 5.6M4 12a8 8 0 0 1 13.7-5.6"/><path d="M17.7 2.4v4.2h-4.2M6.3 21.6v-4.2h4.2"/></svg>
+                <div><strong>One tap flips your orbit</strong><span>Tap anywhere on the screen, with either hand.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2.5"/><path d="M12 2v5M12 22v-5M2 12h5M22 12h-5M10 5l2 2 2-2M10 19l2-2 2 2M5 10l2 2-2 2M19 10l-2 2 2 2"/></svg>
+                <div><strong>Asteroids from every edge</strong><span>Each one is aimed near your orbit.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18a9 9 0 1 1 16 0"/><path d="m12 14 4.5-5"/></svg>
+                <div><strong>It only gets faster</strong><span>Asteroids and your orb speed up until full speed at 50 seconds.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></svg>
+                <div><strong>Fair hits</strong><span>Hit circles match the rocks you see, and your orb's is a little smaller than its glow.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="8" r="4"/><path d="M3.5 20.5 12 12M3.5 14.5l5-5M9.5 20.5l5-5"/></svg>
+                <div><strong>Close calls</strong><span>Skim past a rock for a CLOSE! pop and a whoosh. Chain them for CLOSE x2, x3. Your score stays seconds survived.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13.5" r="8"/><path d="M12 9.5v4l2.6 2.6M9 2h6"/></svg>
+                <div><strong>Beat your best time</strong><span>Saved on your phone, with a short jingle when you beat it.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+                <div><strong>Pauses when you need it</strong><span>Tap the pause button, leave the app or press Back mid-run and the game waits for you.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h4l5 4v-13l-5 4z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+                <div><strong>Original sound effects</strong><span>With a mute button on the title, pause and results screens.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4z"/></svg>
+                <div><strong>HD space</strong><span>A blazing star, 3D-shaded asteroids in four materials, parallax stars and a glowing trail. Crashes shatter and burst.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+                <div><strong>Plays offline</strong><span>No ads, no in-app purchases, no account or sign-in.</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- screenshots: files live in img/shot-1.webp ... shot-6.webp (see README to swap them) -->
+    <section id="screens" style="padding-top:0">
+      <div class="wrap">
+        <div class="gallery-nav">
+          <button class="round-btn" data-scroll="-1" aria-label="Previous screenshots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="round-btn" data-scroll="1" aria-label="Next screenshots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="gallery reveal" tabindex="0" aria-label="Orbit Dodge screenshots">
+        <figure><img src="img/shot-1.webp" alt="One tap flips your orbit: 17.5 seconds into a run, the orb reverses around the sun and slips past an asteroid for a CLOSE! near miss" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="img/shot-2.webp" alt="Asteroids from every edge: 15.8 seconds into a run, rocks around the orbit and drifting in from the edges of the screen" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="img/shot-3.webp" alt="The orb bursts and an asteroid shatters 31.3 seconds into a run, just after a double near miss" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="img/shot-4.webp" alt="Results panel showing 31.3 seconds survived and the saved record" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="img/shot-5.webp" alt="Orbit Dodge title screen with the logo, the orb on its orbit around the sun, Tap to play and the best time" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="img/shot-6.webp" alt="Paused game with Home, Resume and Restart buttons over frozen asteroids" loading="lazy" width="540" height="960"></figure>
+      </div>
+    </section>
+
+    <!-- closed test -->
+    <section id="test">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="kicker">Early access</span>
+          <h2>Help us test Orbit Dodge</h2>
+          <p>Orbit Dodge is getting ready for closed testing on Google Play before its public release. You will need an Android phone and a Google account, and joining takes three quick steps.</p>
+          <p><strong>Sign-up links go live here when the test opens.</strong> Want a spot? Email <a href="mailto:omdo.games21@gmail.com">omdo.games21@gmail.com</a> and we will invite you.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <span class="num">1</span>
+            <h3>Join the testers group</h3>
+            <p>Open our Google Group and tap <em>Join group</em>. This gives your Google account access to the test.</p>
+            <!-- [replace] Swap the span for: <a class="btn btn-ghost" href="YOUR-GOOGLE-GROUP-LINK" target="_blank" rel="noopener">Open the group</a> -->
+          </div>
+          <div class="step reveal" style="--d:.08s">
+            <span class="num">2</span>
+            <h3>Become a tester</h3>
+            <p>Accept the invite on Google Play's testing page, then install Orbit Dodge from Google Play.</p>
+            <!-- [replace] Swap the span for: <a class="btn btn-gold" href="https://play.google.com/apps/testing/com.omdo.orbitdodge" target="_blank" rel="noopener">Become a tester</a> -->
+          </div>
+          <div class="step reveal" style="--d:.16s">
+            <span class="num">3</span>
+            <h3>Play and tell us</h3>
+            <p>Stay opted in for at least 14 days. Tell us about crashes, hits that felt unfair, and how quickly it gets hard.</p>
+            <!-- [replace] Swap the span for: <a class="btn btn-ghost" href="YOUR-FEEDBACK-FORM-LINK" target="_blank" rel="noopener">Send feedback</a> -->
+            <p class="alt">Or email <a href="mailto:omdo.games21@gmail.com">omdo.games21@gmail.com</a></p>
+          </div>
+        </div>
+        <p class="note reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+          Use the same Google account for all three steps, the one signed in to Play Store on your phone.
+        </p>
+        <p class="fine reveal">Joining the test shares your email address with us. We use it only to run the test. See the <a href="privacy.html">Orbit Dodge privacy policy</a>.</p>
+      </div>
+    </section>
+
+    <!-- press kit -->
+    <section id="press">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Press kit</span>
+          <h2>Fact sheet and images</h2>
+          <p>Everything you need to write about Orbit Dodge. The images are free to use in coverage of the game.</p>
+        </div>
+        <div class="press-grid">
+          <div class="press-card reveal">
+            <h3>Fact sheet</h3>
+            <dl class="facts">
+              <dt>Title</dt><dd>Orbit Dodge</dd>
+              <dt>Developer</dt><dd>OMDO</dd>
+              <dt>Platform</dt><dd>Android phones, portrait</dd>
+              <dt>Genre</dt><dd>One-tap arcade</dd>
+              <dt>Status</dt><dd>Closed test coming soon on Google Play</dd>
+              <dt>Online</dt><dd>Plays offline. No ads, no in-app purchases, no account.</dd>
+              <dt>Language</dt><dd>English</dd>
+              <dt>Website</dt><dd><a href="https://omdo-apps.github.io/orbit-dodge/">omdo-apps.github.io/orbit-dodge</a></dd>
+              <dt>Privacy</dt><dd><a href="https://omdo-apps.github.io/orbit-dodge/privacy.html">omdo-apps.github.io/orbit-dodge/privacy.html</a></dd>
+              <dt>Press contact</dt><dd><a href="mailto:omdo.games21@gmail.com">omdo.games21@gmail.com</a></dd>
+            </dl>
+            <h3 class="more">About</h3>
+            <p>Orbit Dodge is a one-tap arcade game about timing. A glowing orb circles a blazing star while asteroids drift in from every edge of the screen, and the player's only move is to reverse the orbit. The score is the number of seconds survived.</p>
+          </div>
+          <div class="press-card reveal" style="--d:.08s">
+            <h3>Download images</h3>
+            <p>The screenshots are real gameplay captures. Only the caption bands and framing were added.</p>
+            <ul class="downloads">
+              <li><a class="zip" href="press/orbit-dodge-press-kit.zip" download>All images (ZIP) <span>5.9 MB</span></a></li>
+              <li><a href="press/feature-graphic.png" download="orbit-dodge-feature-graphic.png">Feature graphic <span>1024 x 500 PNG</span></a></li>
+              <li><a href="press/icon-512.png" download="orbit-dodge-icon-512.png">App icon <span>512 x 512 PNG</span></a></li>
+              <li><a href="press/screenshot-1.png" download="orbit-dodge-screenshot-1.png">Screenshot 1: One tap flips your orbit <span>1080 x 1920</span></a></li>
+              <li><a href="press/screenshot-2.png" download="orbit-dodge-screenshot-2.png">Screenshot 2: Asteroids from every edge <span>1080 x 1920</span></a></li>
+              <li><a href="press/screenshot-3.png" download="orbit-dodge-screenshot-3.png">Screenshot 3: The longer you last (crash at 31.3s) <span>1080 x 1920</span></a></li>
+              <li><a href="press/screenshot-4.png" download="orbit-dodge-screenshot-4.png">Screenshot 4: Beat your own record (results) <span>1080 x 1920</span></a></li>
+              <li><a href="press/screenshot-5.png" download="orbit-dodge-screenshot-5.png">Screenshot 5: Plays offline (title screen) <span>1080 x 1920</span></a></li>
+              <li><a href="press/screenshot-6.png" download="orbit-dodge-screenshot-6.png">Screenshot 6: It waits for you (pause) <span>1080 x 1920</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-card reveal">
+          <span class="kicker">Contact</span>
+          <h2>Questions or feedback?</h2>
+          <p>A crash, a hit that felt unfair, or a press question about Orbit Dodge? We read every message.</p>
+          <div class="actions">
+            <a class="btn btn-gold" href="mailto:omdo.games21@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
+              omdo.games21@gmail.com
+            </a>
+            <a class="btn btn-ghost" href="https://www.instagram.com/omdo.apps/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              @omdo.apps
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <a class="brand" href="../" aria-label="OMDO Apps home">
+        <svg aria-hidden="true"><use href="#omdo-mark"/></svg>
+        <span class="brand-name">OMDO<small>APPS</small></span>
+      </a>
+      <div class="footer-links">
+        <a href="../">OMDO home</a>
+        <a href="../#games">All games</a>
+        <a href="privacy.html">Orbit Dodge privacy</a>
+        <a href="#contact">Contact</a>
+        <a href="https://www.instagram.com/omdo.apps/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div>© <span data-year>2026</span> OMDO</div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js?v=2" defer></script>
+</body>
+</html>
