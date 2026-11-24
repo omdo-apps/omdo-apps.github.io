@@ -77,18 +77,18 @@
     els.forEach(el => io.observe(el));
   } else els.forEach(el => el.classList.add("in"));
 
-  // ---- gameplay video: only play while visible ----
-  const video = document.querySelector(".phone video");
-  if (video) {
+  // ---- gameplay videos: each plays only while visible ----
+  document.querySelectorAll(".phone video").forEach(video => {
     if (reduce) { video.removeAttribute("autoplay"); video.controls = true; video.pause(); }
     else if ("IntersectionObserver" in window) {
       new IntersectionObserver(([e]) => { e.isIntersecting ? video.play().catch(() => {}) : video.pause(); }, { threshold: 0.25 }).observe(video);
     }
-  }
+  });
 
-  // ---- gallery arrows ----
-  const gallery = document.querySelector(".gallery");
+  // ---- gallery arrows (each pair scrolls the gallery in its own section) ----
   document.querySelectorAll("[data-scroll]").forEach(b => b.addEventListener("click", () => {
+    const gallery = (b.closest("section") || document).querySelector(".gallery");
+    if (!gallery) return;
     const fig = gallery.querySelector("figure");
     const step = fig ? fig.getBoundingClientRect().width + 20 : 300;
     gallery.scrollBy({ left: step * Number(b.dataset.scroll), behavior: reduce ? "auto" : "smooth" });

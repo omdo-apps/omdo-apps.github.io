@@ -141,6 +141,8 @@ section { padding: clamp(64px, 9vw, 112px) 0; position: relative; }
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1) inset, 0 40px 80px -30px rgba(0, 0, 0, 0.8), 0 0 90px -20px rgba(124, 108, 255, 0.45);
 }
 .phone video, .phone img { width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: contain; border-radius: 33px; background: #05060c; }
+/* A recording a little taller than 9:16: trim the top and bottom equally (hides the phone's status and gesture bars). */
+.phone video.fill { object-fit: cover; object-position: center; }
 .phone::before { content: ""; position: absolute; top: 20px; left: 50%; width: 11px; height: 11px; margin-left: -5.5px; border-radius: 50%; background: #05060c; box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.08); z-index: 2; }
 .app-title { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
 .app-title img { width: 76px; height: 76px; border-radius: 20px; box-shadow: 0 10px 30px -10px rgba(124, 108, 255, 0.7); }

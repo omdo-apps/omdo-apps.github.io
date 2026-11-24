@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css?v=2">
+  <link rel="stylesheet" href="assets/site.css?v=3">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"OMDO Apps","url":"https://omdo-apps.github.io/","logo":"https://omdo-apps.github.io/assets/apple-touch-icon.png","email":"omdo.games21@gmail.com","sameAs":["https://www.instagram.com/omdo.apps/"]}
   </script>
@@ -93,7 +93,7 @@
         <div class="section-head reveal">
           <span class="kicker">Our games</span>
           <h2>One tap. Endless space.</h2>
-          <p>Our first game is out in beta on Google Play. Here's what it's about.</p>
+          <p>Two one-tap space games. Orbit Hop is in beta on Google Play, and Orbit Dodge is coming soon.</p>
         </div>
         <div class="game-grid">
           <div class="phone reveal">
@@ -174,7 +174,7 @@
       <div class="wrap">
         <div class="game-grid">
           <div class="phone reveal">
-            <img src="orbit-dodge/img/shot-1.webp" alt="Orbit Dodge gameplay: the orb reverses its orbit around the sun and slips past an asteroid for a CLOSE! near miss" width="540" height="960" loading="lazy">
+            <video class="fill" src="orbit-dodge/img/gameplay.mp4" poster="orbit-dodge/img/gameplay-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Orbit Dodge gameplay"></video>
           </div>
           <div class="game-copy reveal" style="--d:.1s">
             <div class="app-title">
@@ -202,13 +202,47 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13.5" r="8"/><path d="M12 9.5v4l2.6 2.6M9 2h6"/></svg>
                 <div><strong>Beat your best time</strong><span>Survival is your score, in seconds.</span></div>
               </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg>
+                <div><strong>24 levels in 4 sectors</strong><span>Comets, solar flares, swarms and gravity.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="14" r="6"/><path d="M19 3l.9 2.1L22 6l-2.1.9L19 9l-.9-2.1L16 6l2.1-.9z"/></svg>
+                <div><strong>Skins to unlock</strong><span>Orbs, trails and stars, earned by playing.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="8" r="4"/><path d="M3.5 20.5 12 12M3.5 14.5l5-5M9.5 20.5l5-5"/></svg>
+                <div><strong>Close calls</strong><span>Skim a rock and time slows for a moment.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4z"/></svg>
+                <div><strong>HD space</strong><span>A blazing star and 3D-shaded asteroids.</span></div>
+              </li>
             </ul>
             <div class="actions">
               <a class="btn btn-gold" href="orbit-dodge/">Meet Orbit Dodge</a>
-              <a class="btn btn-ghost" href="orbit-dodge/#test">Join the test</a>
+              <a class="btn btn-ghost" href="#dodge-screens">See screenshots</a>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Orbit Dodge screenshots -->
+    <section id="dodge-screens" style="padding-top:0">
+      <div class="wrap">
+        <div class="gallery-nav">
+          <button class="round-btn" data-scroll="-1" aria-label="Previous Orbit Dodge screenshots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="round-btn" data-scroll="1" aria-label="Next Orbit Dodge screenshots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="gallery reveal" tabindex="0" aria-label="Orbit Dodge screenshots">
+        <figure><img src="orbit-dodge/img/shot-1.webp" alt="One tap flips your orbit: the orb reverses around the sun and slips past an asteroid for a CLOSE! near miss" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="orbit-dodge/img/shot-2.webp" alt="Asteroids from every edge: rocks around the orbit and drifting in from the edges of the screen" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="orbit-dodge/img/shot-3.webp" alt="The orb bursts and an asteroid shatters just after a double near miss" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="orbit-dodge/img/shot-4.webp" alt="Results panel showing the time survived and the saved record" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="orbit-dodge/img/shot-5.webp" alt="Orbit Dodge title screen with the Endless and Levels buttons" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="orbit-dodge/img/shot-6.webp" alt="Paused game with Home, Resume and Restart buttons over frozen asteroids" loading="lazy" width="540" height="960"></figure>
       </div>
     </section>
 
@@ -314,6 +348,6 @@
     </div>
   </footer>
 
-  <script src="assets/site.js?v=2" defer></script>
+  <script src="assets/site.js?v=4" defer></script>
 </body>
 </html>
