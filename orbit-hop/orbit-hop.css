@@ -1,0 +1,69 @@
+/* Orbit Hop page: extras on top of the shared OMDO styles (../assets/site.css).
+   Uses the same variables, so a colour change in site.css carries over here.
+   The layout pieces (how to play, closed test, press kit) match orbit-dodge.css. */
+
+.skip { position: absolute; left: -9999px; top: 10px; z-index: 100; padding: 10px 18px; border-radius: 999px; background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); color: #1b1300; font-weight: 600; }
+.skip:focus { left: 16px; }
+
+/* Hero art: three planets with dashed orbit rings and a comet hopping between them */
+.oh-art .planet { position: absolute; border-radius: 50%; }
+.oh-art .planet::before { content: ""; position: absolute; inset: -38%; border-radius: 50%; border: 2px dashed var(--ring); opacity: 0.55; animation: spin 30s linear infinite; }
+.oh-art .planet::after { content: ""; position: absolute; left: 18%; top: 16%; width: 34%; height: 34%; border-radius: 50%; background: rgba(255, 255, 255, 0.35); }
+.oh-art .p1 { --ring: #7c6cff; left: 12%; top: 58%; width: 22%; height: 22%; background: radial-gradient(circle at 35% 35%, #9d8cff, #6a52ff); box-shadow: 0 0 40px 6px rgba(124, 108, 255, 0.35); }
+.oh-art .p2 { --ring: #2ec4b6; left: 62%; top: 44%; width: 16%; height: 16%; background: radial-gradient(circle at 35% 35%, #6ff0e2, #22a99c); box-shadow: 0 0 34px 5px rgba(46, 196, 182, 0.3); }
+.oh-art .p3 { --ring: #ff9f45; left: 28%; top: 12%; width: 18%; height: 18%; background: radial-gradient(circle at 35% 35%, #ffd27a, #ff9f45); box-shadow: 0 0 36px 6px rgba(255, 159, 69, 0.3); }
+.oh-art .hop {
+  position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%;
+  background: #fff; box-shadow: 0 0 12px 4px rgba(127, 216, 255, 0.85), 0 0 30px 8px rgba(124, 108, 255, 0.45);
+  animation: oh-hop 6s ease-in-out infinite;
+}
+/* p1 centre (23%,69%), p2 centre (70%,52%), p3 centre (37%,21%): the comet waits on each ring, then flies to the next */
+@keyframes oh-hop {
+  0%, 18% { left: 23%; top: 52%; }
+  33%, 51% { left: 70%; top: 39%; }
+  66%, 84% { left: 37%; top: 6%; }
+  100% { left: 23%; top: 52%; }
+}
+@media (prefers-reduced-motion: reduce) { .oh-art .hop { animation: none; left: 23%; top: 52%; } }
+
+.hero .sub { color: var(--muted); max-width: 44ch; margin-top: 14px; font-size: 17px; }
+@media (max-width: 900px) { .hero .sub { margin-inline: auto; } }
+
+/* How to play */
+.how { margin: 22px 0 0; padding: 0; list-style: none; counter-reset: how; display: grid; gap: 8px; }
+.how li { counter-increment: how; display: flex; gap: 12px; align-items: baseline; color: var(--text); font-size: 16px; }
+.how li::before { content: counter(how); flex: none; width: 26px; height: 26px; border-radius: 8px; display: inline-grid; place-items: center; font: 700 14px/1 var(--font-display); color: #1b1300; background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); transform: translateY(-1px); }
+.game-copy h4 { margin: 26px 0 0; font: 600 18px/1.2 var(--font-display); }
+.game-copy .features { margin-top: 14px; }
+
+/* Closed test extras */
+.step .alt { font-size: 14px; color: var(--muted); flex: 0; }
+.step .alt a, .fine a { color: var(--gold-1); text-decoration: underline; text-decoration-color: rgba(255, 226, 122, 0.4); text-underline-offset: 3px; }
+.fine { margin-top: 12px; color: var(--muted); font-size: 15px; text-align: center; }
+
+/* Press kit */
+.press-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.press-card { padding: clamp(22px, 4vw, 32px); border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); }
+.press-card h3 { font-size: 23px; margin-bottom: 16px; }
+.press-card h3.more { margin-top: 28px; }
+.press-card p { color: var(--muted); font-size: 15.5px; }
+.facts { margin: 0; display: grid; grid-template-columns: minmax(104px, auto) 1fr; font-size: 15.5px; }
+.facts dt, .facts dd { margin: 0; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.facts dt { color: var(--gold-1); font-weight: 600; padding-right: 16px; }
+.facts dd { color: var(--text); overflow-wrap: anywhere; }
+.facts dt:last-of-type, .facts dd:last-of-type { border-bottom: 0; }
+.facts a { color: var(--gold-1); text-decoration: underline; text-decoration-color: rgba(255, 226, 122, 0.4); text-underline-offset: 3px; }
+.downloads { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
+.downloads a { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 14px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--line); font-size: 15px; transition: background 0.2s, border-color 0.2s; }
+.downloads a:hover { background: var(--card-hover); border-color: rgba(255, 226, 122, 0.25); }
+.downloads span { color: var(--muted); font-size: 13.5px; white-space: nowrap; }
+.downloads a.zip { background: rgba(255, 226, 122, 0.08); border-color: rgba(255, 226, 122, 0.3); font-weight: 600; }
+
+@media (max-width: 900px) {
+  .press-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 420px) {
+  .facts { grid-template-columns: 1fr; }
+  .facts dt { border-bottom: 0; padding-bottom: 0; }
+  .downloads a { flex-wrap: wrap; gap: 2px 14px; }
+}

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Orbit Hop: Space Jump — One-tap planet hopping game | OMDO Apps</title>
+  <meta name="description" content="Fling your comet from planet to planet with a single tap. Orbit Hop: Space Jump is a one-tap arcade game for Android by OMDO, in beta on Google Play.">
+  <meta name="theme-color" content="#0b0e1a">
+  <link rel="canonical" href="https://omdo-apps.github.io/orbit-hop/">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OMDO Apps">
+  <meta property="og:title" content="Orbit Hop: Space Jump — Tap, fling, orbit">
+  <meta property="og:description" content="Fling your comet from planet to planet with a single tap. Chain combos, explore six galaxy zones and play a new Daily Galaxy every day.">
+  <meta property="og:url" content="https://omdo-apps.github.io/orbit-hop/">
+  <meta property="og:image" content="https://omdo-apps.github.io/orbit-hop/press/feature-graphic.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="500">
+  <meta property="og:image:alt" content="Orbit Hop logo with the tagline Tap, fling, orbit, beside a purple planet and a comet hopping to the next orbit">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css?v=3">
+  <link rel="stylesheet" href="orbit-hop.css?v=1">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"VideoGame","name":"Orbit Hop: Space Jump","url":"https://omdo-apps.github.io/orbit-hop/","image":"https://omdo-apps.github.io/orbit-hop/press/feature-graphic.png","description":"A one-tap arcade game: fling your comet from planet to planet, chain combos and see how far you can hop.","genre":"Arcade","gamePlatform":"Android","publisher":{"@type":"Organization","name":"OMDO Apps","url":"https://omdo-apps.github.io/","email":"omdo.games21@gmail.com"}}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- OMDO logo mark (same as the home page), drawn once and reused -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="omdo-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE27A"/><stop offset="1" stop-color="#FFB938"/></linearGradient>
+      <mask id="omdo-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512"><rect width="512" height="512" fill="#fff"/><circle cx="318" cy="214" r="150" fill="#000"/></mask>
+      <symbol id="omdo-mark" viewBox="40 60 400 400">
+        <circle cx="246" cy="268" r="176" fill="url(#omdo-gold)" mask="url(#omdo-cut)"/>
+        <path d="M330.85,173.12 L340.30,224.47 L391.28,235.70 L345.37,260.55 L350.44,312.51 L312.62,276.53 L264.77,297.40 L287.30,250.31 L252.66,211.26 L304.41,218.14 Z" fill="url(#omdo-gold)" stroke="url(#omdo-gold)" stroke-width="10" stroke-linejoin="round"/>
+        <path d="M392,125 L396.24,135.76 L407,140 L396.24,144.24 L392,155 L387.76,144.24 L377,140 L387.76,135.76 Z" fill="#FFE27A" opacity="0.9"/>
+        <path d="M84,116 L87.54,124.46 L96,128 L87.54,131.54 L84,140 L80.46,131.54 L72,128 L80.46,124.46 Z" fill="#FFE27A" opacity="0.75"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main">
+      <a class="brand" href="../" aria-label="OMDO Apps home">
+        <svg aria-hidden="true"><use href="#omdo-mark"/></svg>
+        <span class="brand-name">OMDO<small>APPS</small></span>
+      </a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="../#games">All games</a>
+        <a href="#screens">Screenshots</a>
+        <a href="#press">Press kit</a>
+        <a class="cta" href="#beta">Join the beta</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- hero -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow reveal"><span class="dot"></span>In beta on Google Play</span>
+          <h1 class="reveal" style="--d:.08s">Orbit <span class="gold">Hop</span></h1>
+          <p class="lead reveal" style="--d:.16s">Fling your comet from planet to planet with a single tap. How far can you hop?</p>
+          <p class="sub reveal" style="--d:.2s">A one-tap space arcade game from OMDO. Chain combos, explore six galaxy zones, and play a new Daily Galaxy every day.</p>
+          <div class="hero-actions reveal" style="--d:.24s">
+            <a class="btn btn-gold" href="#beta">
+              Join the beta
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="#screens">See screenshots</a>
+          </div>
+        </div>
+        <div class="hero-art oh-art reveal" style="--d:.1s" aria-hidden="true">
+          <div class="halo"></div>
+          <span class="planet p1"></span>
+          <span class="planet p2"></span>
+          <span class="planet p3"></span>
+          <span class="hop"></span>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">Scroll<i></i></div>
+    </section>
+
+    <!-- the game -->
+    <section id="game">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">The game</span>
+          <h2>Tap. Fling. Orbit.</h2>
+          <p>Your comet circles a planet. Tap at the right moment to launch it along its path and land in the next planet's orbit. Hop at the first chance to chain combos, and every landing plays the next note of a melody.</p>
+        </div>
+        <div class="game-grid">
+          <div class="phone reveal">
+            <video src="../assets/orbit-hop-gameplay.mp4" poster="../assets/orbit-hop-poster.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Orbit Hop gameplay"></video>
+          </div>
+          <div class="game-copy reveal" style="--d:.1s">
+            <div class="app-title">
+              <img src="../assets/orbit-hop-icon.png" alt="Orbit Hop app icon" width="76" height="76">
+              <div>
+                <h3>Orbit Hop: Space Jump</h3>
+                <div class="meta">Arcade · Android · Plays offline</div>
+              </div>
+            </div>
+            <p>A one-tap arcade game about timing. The further you hop, the faster your comet circles, the smaller the planets get and the wider the gaps. Every 15 planets you enter a new galaxy zone. Runs take a minute or two, so it fits into a short break.</p>
+            <h4>How to play</h4>
+            <ol class="how">
+              <li>Tap PLAY, then tap to launch your comet along its path.</li>
+              <li>Land inside the next planet's orbit ring to be captured.</li>
+              <li>Hop at the first chance to build a combo, up to ×5.</li>
+              <li>Missed? Tap Retry and go for a longer run.</li>
+            </ol>
+            <h4>What's in the game</h4>
+            <ul class="features">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></svg>
+                <div><strong>One-touch gameplay</strong><span>Tap anywhere on the screen. Easy to learn, hard to master.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+                <div><strong>Combos up to ×5</strong><span>Hop at the first chance to multiply your score. A gold timer around your planet shows how long you have.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <div><strong>Musical hops</strong><span>Every landing plays the next note of a melody. A high combo lifts it an octave.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg>
+                <div><strong>Perfect landings</strong><span>Fly straight at a planet's centre for bonus points and a harmony note.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><ellipse cx="12" cy="12" rx="10.5" ry="3.6" transform="rotate(-20 12 12)"/></svg>
+                <div><strong>Six galaxy zones</strong><span>Deep Space, Ember Nebula, Frost Belt, Toxic Cloud, Violet Storm and Golden Core, each with its own colours.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><path d="M4.9 4.9 7 7M17 17l2.1 2.1"/></svg>
+                <div><strong>Surprises on the way</strong><span>Unstable planets that throw you off, treasure planets full of stars and wormholes that skip ahead.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5 14 3l5 4 1.5 6-3.5 5.5-6 1.5-5-3.5L4 10z"/><circle cx="10" cy="10" r="1.6"/><circle cx="14.5" cy="14" r="1.2"/></svg>
+                <div><strong>Dodge asteroids</strong><span>From the Frost Belt on, rocks drift across the gaps. Time your hop around them.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 4v8a6 6 0 0 0 12 0V4"/><path d="M6 8h4M14 8h4"/></svg>
+                <div><strong>Power-ups</strong><span>A shield that saves one miss, a magnet that pulls in every star, and slow-mo to help you aim.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+                <div><strong>Daily Galaxy</strong><span>A new galaxy every day, the same for every player. Beat the daily goal for bonus stars.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v9H4v-9"/><rect x="2" y="7" width="20" height="5" rx="1"/><path d="M12 21V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                <div><strong>Missions and daily gifts</strong><span>Always three missions to chase, and a gift that grows every day you come back.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="17" cy="7" r="3"/><path d="M14.5 9.5 4 20M12.2 6.8 5 14M17.2 11.8 10 19"/></svg>
+                <div><strong>25 comet skins</strong><span>Moons, rockets, satellites, atoms and more, each with its own trail. Five special skins can only be earned.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>
+                <div><strong>Live records</strong><span>A banner the moment you pass your best score, and a line marking the furthest planet you've reached.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+                <div><strong>Pauses when you need it</strong><span>Press Back or leave the app mid-run and the game pauses. Sound and vibration have on/off switches.</span></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+                <div><strong>About ads</strong><span>A small banner below the game, rewarded ads only when you choose one (continue a run or double your stars) and an occasional ad between runs, never mid-hop. No in-app purchases, no account.</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- screenshots: the same images as the home page gallery (../assets/shot-1.webp ... shot-6.webp) -->
+    <section id="screens" style="padding-top:0">
+      <div class="wrap">
+        <div class="gallery-nav">
+          <button class="round-btn" data-scroll="-1" aria-label="Previous screenshots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="round-btn" data-scroll="1" aria-label="Next screenshots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="gallery reveal" tabindex="0" aria-label="Orbit Hop screenshots">
+        <figure><img src="../assets/shot-1.webp" alt="Chain hops for combo multipliers" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="../assets/shot-2.webp" alt="Explore new galaxy zones" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="../assets/shot-3.webp" alt="Unlock 25 comet skins" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="../assets/shot-4.webp" alt="A new galaxy every day" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="../assets/shot-5.webp" alt="Complete missions to earn stars" loading="lazy" width="540" height="960"></figure>
+        <figure><img src="../assets/shot-6.webp" alt="Beat your best score" loading="lazy" width="540" height="960"></figure>
+      </div>
+    </section>
+
+    <!-- closed beta -->
+    <section id="beta">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="kicker">Early access</span>
+          <h2>Play Orbit Hop before everyone else</h2>
+          <p>Orbit Hop is in closed testing on Google Play. You need an Android phone and a Google account, and joining takes three quick steps.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <span class="num">1</span>
+            <h3>Join the testers group</h3>
+            <p>Open our Google Group and tap <em>Join group</em>. This gives your Google account access to the test.</p>
+            <a class="btn btn-ghost" href="https://groups.google.com/g/omdo-orbit-hop-testers" target="_blank" rel="noopener">Open the group</a>
+          </div>
+          <div class="step reveal" style="--d:.08s">
+            <span class="num">2</span>
+            <h3>Become a tester</h3>
+            <p>Accept the invite on Google Play's testing page.</p>
+            <a class="btn btn-ghost" href="https://play.google.com/apps/testing/com.omdo.orbithop" target="_blank" rel="noopener">Become a tester</a>
+          </div>
+          <div class="step reveal" style="--d:.16s">
+            <span class="num">3</span>
+            <h3>Install and play</h3>
+            <p>Download Orbit Hop from Google Play and start hopping. Tell us what you think.</p>
+            <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.omdo.orbithop" target="_blank" rel="noopener">Get it on Google Play</a>
+            <p class="alt">Feedback? Email <a href="mailto:omdo.games21@gmail.com">omdo.games21@gmail.com</a></p>
+          </div>
+        </div>
+        <p class="note reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+          Use the same Google account for all three steps, the one signed in to Play Store on your phone.
+        </p>
+        <p class="fine reveal">Joining the test shares your email address with us. We use it only to run the test. See the <a href="../privacy.html">Orbit Hop privacy policy</a>.</p>
+      </div>
+    </section>
+
+    <!-- press kit -->
+    <section id="press">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">Press kit</span>
+          <h2>Fact sheet and images</h2>
+          <p>Everything you need to write about Orbit Hop. The images are free to use in coverage of the game.</p>
+        </div>
+        <div class="press-grid">
+          <div class="press-card reveal">
+            <h3>Fact sheet</h3>
+            <dl class="facts">
+              <dt>Title</dt><dd>Orbit Hop: Space Jump</dd>
+              <dt>Developer</dt><dd>OMDO</dd>
+              <dt>Platform</dt><dd>Android phones, portrait</dd>
+              <dt>Genre</dt><dd>One-tap arcade</dd>
+              <dt>Status</dt><dd>Closed beta on Google Play</dd>
+              <dt>Version</dt><dd>1.3.1</dd>
+              <dt>Modes</dt><dd>Endless hopping through six galaxy zones, and the Daily Galaxy</dd>
+              <dt>Ads</dt><dd>Contains ads (Google AdMob): a banner, optional rewarded ads and occasional ads between runs. No in-app purchases, no account.</dd>
+              <dt>Online</dt><dd>Playable offline. Ads and the ad privacy form need a connection.</dd>
+              <dt>Language</dt><dd>English</dd>
+              <dt>Website</dt><dd><a href="https://omdo-apps.github.io/orbit-hop/">omdo-apps.github.io/orbit-hop</a></dd>
+              <dt>Privacy</dt><dd><a href="https://omdo-apps.github.io/privacy.html">omdo-apps.github.io/privacy.html</a></dd>
+              <dt>Press contact</dt><dd><a href="mailto:omdo.games21@gmail.com">omdo.games21@gmail.com</a></dd>
+            </dl>
+            <h3 class="more">About</h3>
+            <p>Orbit Hop: Space Jump is a one-tap arcade game about timing. A comet circles a planet, and one tap flings it along its path toward the next planet's orbit. Hopping at the first chance builds combos up to ×5, and every landing plays the next note of a melody. Runs pass through six galaxy zones with unstable planets, wormholes, asteroids and power-ups, and a new Daily Galaxy each day is the same for every player. Stars from runs, missions and daily gifts unlock 25 comet skins. The game is supported by ads, with no in-app purchases.</p>
+          </div>
+          <div class="press-card reveal" style="--d:.08s">
+            <h3>Download images</h3>
+            <p>The screenshots are real gameplay captures. Only the caption bands and framing were added.</p>
+            <ul class="downloads">
+              <li><a class="zip" href="press/orbit-hop-press-kit.zip" download>All images (ZIP) <span>1.6 MB</span></a></li>
+              <li><a href="press/feature-graphic.png" download="orbit-hop-feature-graphic.png">Feature graphic <span>1024 x 500 PNG</span></a></li>
+              <li><a href="press/icon-512.png" download="orbit-hop-icon-512.png">App icon <span>512 x 512 PNG</span></a></li>
+              <li><a href="press/screenshot-1.png" download="orbit-hop-screenshot-1.png">Screenshot 1: Chain hops for combos <span>1080 x 1920</span></a></li>
+              <li><a href="press/screenshot-2.png" download="orbit-hop-screenshot-2.png">Screenshot 2: Explore new galaxy zones <span>1080 x 1920</span></a></li>
+              <li><a href="press/screenshot-3.png" download="orbit-hop-screenshot-3.png">Screenshot 3: Unlock 25 comet skins <span>1080 x 1920</span></a></li>
+              <li><a href="press/screenshot-4.png" download="orbit-hop-screenshot-4.png">Screenshot 4: A new galaxy every day <span>1080 x 1920</span></a></li>
+              <li><a href="press/screenshot-5.png" download="orbit-hop-screenshot-5.png">Screenshot 5: Missions <span>1080 x 1920</span></a></li>
+              <li><a href="press/screenshot-6.png" download="orbit-hop-screenshot-6.png">Screenshot 6: Beat your best score <span>1080 x 1920</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-card reveal">
+          <span class="kicker">Contact</span>
+          <h2>Questions or feedback?</h2>
+          <p>A bug, an idea for a new skin, or a press question about Orbit Hop? We read every message.</p>
+          <div class="actions">
+            <a class="btn btn-gold" href="mailto:omdo.games21@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
+              omdo.games21@gmail.com
+            </a>
+            <a class="btn btn-ghost" href="https://www.instagram.com/omdo.apps/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              @omdo.apps
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <a class="brand" href="../" aria-label="OMDO Apps home">
+        <svg aria-hidden="true"><use href="#omdo-mark"/></svg>
+        <span class="brand-name">OMDO<small>APPS</small></span>
+      </a>
+      <div class="footer-links">
+        <a href="../">OMDO home</a>
+        <a href="../#games">All games</a>
+        <a href="../privacy.html">Orbit Hop privacy</a>
+        <a href="#contact">Contact</a>
+        <a href="https://www.instagram.com/omdo.apps/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div>© <span data-year>2026</span> OMDO</div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js?v=4" defer></script>
+</body>
+</html>
