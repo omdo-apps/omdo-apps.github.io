@@ -2,8 +2,6 @@
    Uses the same variables, so a colour change in site.css carries over here.
    The layout pieces (how to play, closed test, press kit) match orbit-dodge.css. */
 
-.skip { position: absolute; left: -9999px; top: 10px; z-index: 100; padding: 10px 18px; border-radius: 999px; background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); color: #1b1300; font-weight: 600; }
-.skip:focus { left: 16px; }
 
 /* Hero art: three planets with dashed orbit rings and a comet hopping between them */
 .oh-art .planet { position: absolute; border-radius: 50%; }

@@ -77,12 +77,13 @@
     els.forEach(el => io.observe(el));
   } else els.forEach(el => el.classList.add("in"));
 
-  // ---- gameplay videos: each plays only while visible ----
+  // ---- gameplay videos: they have preload="none" and no autoplay, so nothing downloads
+  //      until a video scrolls into view; then it plays, and pauses again when it leaves ----
   document.querySelectorAll(".phone video").forEach(video => {
-    if (reduce) { video.removeAttribute("autoplay"); video.controls = true; video.pause(); }
-    else if ("IntersectionObserver" in window) {
+    if (reduce) { video.controls = true; return; } // reduced motion: the visitor presses play
+    if ("IntersectionObserver" in window) {
       new IntersectionObserver(([e]) => { e.isIntersecting ? video.play().catch(() => {}) : video.pause(); }, { threshold: 0.25 }).observe(video);
-    }
+    } else video.play().catch(() => {});
   });
 
   // ---- gallery arrows (each pair scrolls the gallery in its own section) ----

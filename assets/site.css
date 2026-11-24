@@ -8,7 +8,7 @@
   --violet: #7c6cff;
   --text: #eef0f8;
   --muted: #9aa3c7;
-  --faint: #6b7397;
+  --faint: #7a82a6; /* 5.1:1 on --bg, readable small text */
   --line: rgba(255, 255, 255, 0.08);
   --card: rgba(255, 255, 255, 0.035);
   --card-hover: rgba(255, 255, 255, 0.06);
@@ -206,6 +206,9 @@ section { padding: clamp(64px, 9vw, 112px) 0; position: relative; }
 .contact-card .actions { justify-content: center; margin-top: 32px; }
 
 /* footer */
+/* "Skip to content" link: hidden until a keyboard user tabs to it */
+.skip { position: absolute; left: -9999px; top: 10px; z-index: 100; padding: 10px 18px; border-radius: 999px; background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); color: #1b1300; font-weight: 600; }
+.skip:focus { left: 16px; }
 .site-footer { border-top: 1px solid var(--line); padding: 40px 0 48px; color: var(--faint); font-size: 14.5px; }
 .footer-grid { display: flex; flex-wrap: wrap; gap: 20px 32px; align-items: center; justify-content: space-between; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 6px 22px; }
