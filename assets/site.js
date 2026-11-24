@@ -77,13 +77,19 @@
     els.forEach(el => io.observe(el));
   } else els.forEach(el => el.classList.add("in"));
 
-  // ---- gameplay videos: they have preload="none" and no autoplay, so nothing downloads
-  //      until a video scrolls into view; then it plays, and pauses again when it leaves ----
+  // ---- gameplay videos: they have preload="none" and no autoplay, so nothing downloads when the
+  //      page opens. When a video comes within about a screen of the viewport it starts loading,
+  //      so it's ready by the time it scrolls in; it plays while visible and pauses when it leaves ----
   document.querySelectorAll(".phone video").forEach(video => {
     if (reduce) { video.controls = true; return; } // reduced motion: the visitor presses play
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(([e]) => { e.isIntersecting ? video.play().catch(() => {}) : video.pause(); }, { threshold: 0.25 }).observe(video);
-    } else video.play().catch(() => {});
+    if (!("IntersectionObserver" in window)) { video.play().catch(() => {}); return; }
+    const early = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      early.disconnect();
+      if (video.preload !== "auto") { video.preload = "auto"; video.load(); }
+    }, { rootMargin: "100% 0px" });
+    early.observe(video);
+    new IntersectionObserver(([e]) => { e.isIntersecting ? video.play().catch(() => {}) : video.pause(); }, { threshold: 0.25 }).observe(video);
   });
 
   // ---- gallery arrows (each pair scrolls the gallery in its own section) ----
