@@ -79,17 +79,25 @@
 
   // ---- gameplay videos: they have preload="none" and no autoplay, so nothing downloads when the
   //      page opens. When a video comes within about a screen of the viewport it starts loading,
-  //      so it's ready by the time it scrolls in; it plays while visible and pauses when it leaves ----
+  //      so it's ready by the time it scrolls in; it plays while visible and pauses when it leaves.
+  //      startLoading runs at most once, and always before play(): calling load() after play()
+  //      cancels the play, which froze the video when a visitor jumped straight to it (#orbit-dodge) ----
   document.querySelectorAll(".phone video").forEach(video => {
     if (reduce) { video.controls = true; return; } // reduced motion: the visitor presses play
     if (!("IntersectionObserver" in window)) { video.play().catch(() => {}); return; }
+    const startLoading = () => {
+      if (video.preload !== "auto") { video.preload = "auto"; video.load(); }
+    };
     const early = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting) return;
       early.disconnect();
-      if (video.preload !== "auto") { video.preload = "auto"; video.load(); }
+      startLoading();
     }, { rootMargin: "100% 0px" });
     early.observe(video);
-    new IntersectionObserver(([e]) => { e.isIntersecting ? video.play().catch(() => {}) : video.pause(); }, { threshold: 0.25 }).observe(video);
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { startLoading(); video.play().catch(() => {}); }
+      else video.pause();
+    }, { threshold: 0.25 }).observe(video);
   });
 
   // ---- gallery arrows (each pair scrolls the gallery in its own section) ----
